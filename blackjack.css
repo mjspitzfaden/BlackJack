@@ -1,0 +1,44 @@
+#table {
+  padding: 200px 50px;
+  border: 10px solid red;
+  background: green;
+}
+
+.lable{
+padding: 50px 50px;
+background: lightblue;
+}
+
+.buttons {
+  text-align: center;
+
+
+}
+
+.hand {
+  padding: 10px;
+  height: 150px;
+  background: lightgreen;
+}
+
+#deal-button {
+  width: 90px;
+  height: 40px;
+}
+#stand-button {
+  width: 90px;
+  height: 40px;
+}
+
+#hit-button {
+  width: 90px;
+  height: 40px;
+}
+
+.hand img {
+  width: 100px;
+  height: 140px;
+  display: block;
+  float: left;
+  padding: 5px;
+}
