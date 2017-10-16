@@ -2,6 +2,15 @@
   padding: 200px 50px;
   border: 10px solid red;
   background: green;
+  border-radius: 140px;
+}
+
+#messages {
+ font-size: 25px;
+ color: brown;
+ border: 10px solid blue;
+ font-style: oblique;
+
 }
 
 .lable{
@@ -11,8 +20,7 @@ background: lightblue;
 
 .buttons {
   text-align: center;
-
-
+  font-size: 25px;
 }
 
 .hand {
@@ -23,22 +31,27 @@ background: lightblue;
 
 #deal-button {
   width: 90px;
-  height: 40px;
+  height: 80px;
+  border-radius: 25px;
 }
 #stand-button {
   width: 90px;
-  height: 40px;
+  height: 80px;
+  border-radius: 25px;
+
 }
 
 #hit-button {
   width: 90px;
-  height: 40px;
+  height: 80px;
+  border-radius: 25px;
 }
 
 #play-again {
   width: 90px;
-  height: 40px;
+  height: 80px;
   color: red;
+  border-radius: 25px;
 }
 
 .hand img {

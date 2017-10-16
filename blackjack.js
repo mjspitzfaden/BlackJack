@@ -28,7 +28,6 @@ $(function domReady() {
 
     PlayerPoints = dealACard('#player-hand');
     if (ifBusted(PlayerPoints)){
-      $('#messages').text('*****HOUDINI CHEATS LIKE YOU ACTUALLY SAW ME DEAL!  BUST! GO HOME AND DO REAL WORK!!');
       $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
       GameOver();
     }
@@ -37,7 +36,10 @@ $(function domReady() {
   });
 
   $('#stand-button').click(function getCardImageUrl() {
+    $('#dealer-hand').find('img').first().remove();
+     addImg();
     $('#hit-button').hide();
+    $('#stand-button').hide();
 
 
 
@@ -52,17 +54,17 @@ $(function domReady() {
       GameOver();}
     }
 
-
-
     if(DealerPoints < PlayerPoints){
       $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
-
+       GameOver();
     }
-    else if (DealerPoints > PlayerPoints){
-      $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+    else if (DealerPoints > PlayerPoints && ifBusted(DealerPoints)){
+      $('#messages').text('COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
+      GameOver();
     }
     else if (DealerPoints === PlayerPoints){
-      $('#messages').text('*****PUSH COMPUTER STILL TAKES ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+      $('#messages').text('PUSH COMPUTER STILL TAKES ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
+      GameOver();
     }
 
     $('#player-points').text(PlayerPoints);
@@ -86,6 +88,9 @@ $(function domReady() {
 
 function GameOver(){
 $('#hit-button').hide();
+$('#dealer-hand').find('img').first().remove();
+ addImg();
+ $('#stand-button').hide();
 }
 
 });  // end of Dom

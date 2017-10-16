@@ -1,6 +1,7 @@
 var playerHand = [];
 var dealHand = [];
 var deck = deckOfCards();
+var firstCard;
 
 // Deals a card for either the dealer or the player
 function dealACard (playerType){
@@ -8,6 +9,7 @@ function dealACard (playerType){
   var points = 0;
 if (playerType === '#dealer-hand'){
    dealHand.push(card);
+   console.log(card);
    points = calculatePoints(dealHand);
 }
 else if (playerType === '#player-hand'){
@@ -15,6 +17,7 @@ else if (playerType === '#player-hand'){
      points = calculatePoints(playerHand);
 }
 if (dealHand.length == 1){
+  firstCard = card.image;
  card.image = 'images/H.png';
 }
   $(playerType).append(
@@ -23,7 +26,11 @@ if (dealHand.length == 1){
 return points
 }
 
-
+function addImg(){
+  $('#dealer-hand').append(
+  '<img src="' + firstCard + '">'
+  )
+}
 
 
 
