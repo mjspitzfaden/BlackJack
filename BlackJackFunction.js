@@ -14,11 +14,12 @@ else if (playerType === '#player-hand'){
      playerHand.push(card);
      points = calculatePoints(playerHand);
 }
-
+if (dealHand.length == 1){
+ card.image = 'images/H.png';
+}
   $(playerType).append(
     '<img src="' + card.image + '">'
   )
-
 return points
 }
 
@@ -27,8 +28,7 @@ return points
 
 
 
-
-
+// Returns points of the persons array
 function calculatePoints(array) {
   var points = 0;
   for (var i = 0; i < array.length; i++) {
@@ -44,18 +44,7 @@ function calculatePoints(array) {
 };
 
 
-var array1 = [{ point: 1, suit:'diamonds', image:  'images/3_of_diamonds.png'},{ point: 1,  suit: 'diamonds', image:  'images/ace_of_diamonds.png' },{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' },{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' }];
-
-
-console.log(calculatePoints(array1));
-
-
-
-
-
-
-
-
+// Shuffles the array
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));

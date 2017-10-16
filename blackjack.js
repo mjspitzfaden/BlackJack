@@ -11,16 +11,6 @@ $(function domReady() {
     $('#dealer-points').text(DealerPoints);
     DealerPoints = dealACard('#dealer-hand');
     $('#dealer-points').text(DealerPoints);
-    while (DealerPoints < 17){
-
-     DealerPoints = dealACard('#dealer-hand');
-      $('#dealer-points').text(DealerPoints);
-    if (ifBusted(DealerPoints)){
-      $('#messages').text("********************** PLAYER WINS ******************************");
-      $('#messages').text("******* DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
-
-      GameOver();}
-    }
 
 
     PlayerPoints = dealACard('#player-hand');
@@ -47,12 +37,33 @@ $(function domReady() {
 
   $('#stand-button').click(function getCardImageUrl() {
     $('#hit-button').hide();
-    if(DealerPoints > PlayerPoints){
-      $('#messages').text("********************** PLAYER WINS ******************************");
+
+
+
+    while (DealerPoints < 17){
+
+     DealerPoints = dealACard('#dealer-hand');
+      $('#dealer-points').text(DealerPoints);
+    if (ifBusted(DealerPoints)){
+      $('#messages').text("**************** PLAYER WINS-DEALER BUSTS ***********************");
       $('#messages').text("******* DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
 
+      GameOver();}
     }
-    else if (DealerPoints < PlayerPoints){
+
+
+
+
+
+
+
+
+
+    if(DealerPoints < PlayerPoints){
+      $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
+
+    }
+    else if (DealerPoints > PlayerPoints){
       $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
     }
     else if (DealerPoints === PlayerPoints){
