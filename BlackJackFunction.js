@@ -38,7 +38,6 @@ function calculatePoints(array) {
 
 
     points += array[i].point;
-    console.log(array[i]);
   }
   return points;
 };
@@ -57,7 +56,8 @@ function shuffleArray(array) {
 
 function startGame(){
   deck = shuffleArray(deck);
-  console.log(deck);
+  playerHand = [];
+  dealHand = [];
   return deck;
 }
 

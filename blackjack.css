@@ -35,6 +35,12 @@ background: lightblue;
   height: 40px;
 }
 
+#play-again {
+  width: 90px;
+  height: 40px;
+  color: red;
+}
+
 .hand img {
   width: 100px;
   height: 140px;

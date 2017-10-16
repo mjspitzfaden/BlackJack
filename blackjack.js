@@ -1,4 +1,5 @@
 $(function domReady() {
+
   startGame();
   var PlayerPoints = 0;
   var DealerPoints = 0;
@@ -53,12 +54,6 @@ $(function domReady() {
 
 
 
-
-
-
-
-
-
     if(DealerPoints < PlayerPoints){
       $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
 
@@ -74,13 +69,23 @@ $(function domReady() {
 
   });
 
+  $('#play-again').click(function() {
+    $('#deal-button').show();
+    $('#hit-button').show();
+    $('#stand-button').show();
+    $('#player-hand').html('');
+    $('#dealer-hand').html('');
+    $('#messages').text('');
+    $('#player-points').text('');
+    $('#dealer-points').text('');
+    startGame();
+  });
 
 
 
 
 function GameOver(){
 $('#hit-button').hide();
-
 }
 
 });  // end of Dom
