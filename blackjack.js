@@ -58,7 +58,7 @@ $(function domReady() {
       $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
        GameOver();
     }
-    else if (DealerPoints > PlayerPoints && ifBusted(DealerPoints)){
+    else if (DealerPoints > PlayerPoints && ifBusted(DealerPoints) === 0){
       $('#messages').text('COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
       GameOver();
     }
