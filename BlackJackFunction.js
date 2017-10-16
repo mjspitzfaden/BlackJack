@@ -22,13 +22,39 @@ else if (playerType === '#player-hand'){
 return points
 }
 
+
+
+
+
+
+
+
 function calculatePoints(array) {
   var points = 0;
   for (var i = 0; i < array.length; i++) {
+
+    if ((array[i].point === 1) && (points < 11)){
+        array[i].point = 11;}
+
+
     points += array[i].point;
+    console.log(array[i]);
   }
   return points;
 };
+
+
+var array1 = [{ point: 1, suit:'diamonds', image:  'images/3_of_diamonds.png'},{ point: 1,  suit: 'diamonds', image:  'images/ace_of_diamonds.png' },{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' },{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' }];
+
+
+console.log(calculatePoints(array1));
+
+
+
+
+
+
+
 
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -144,15 +170,3 @@ var deck = [aceOfDiamonds, aceOfSpades, aceOfHearts, aceOfClubs,
 
 return deck;
 }
-
-
-var array = [{ point: 3, suit:'diamonds', image:  'images/3_of_diamonds.png'},{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' },{ point: 2, suit: 'diamonds', image: 'images/2_of_diamonds.png' }];
-/*function sum( obj ) {
-  var sum = 0;
-  for( var el in obj ) {
-    if( obj.point( el ) ) {
-      sum += parseFloat( obj[el] );
-    }
-  }
-  return sum;
-}*/
