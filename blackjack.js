@@ -1,34 +1,75 @@
 $(function domReady() {
+  startGame();
+  var PlayerPoints = 0;
+  var DealerPoints = 0;
   $('#deal-button').click(function getCardImageUrl() {
 
-    var img = "images/2_of_clubs.png"
-    $('#dealer-hand').append(
-      '<img src="' + img + '">')
-
-      $('#dealer-hand').append(
-        '<img src="' + img + '">')
-        $('#player-hand').append(
-          '<img src="' + img + '">')
-          $('#player-hand').append(
-            '<img src="' + img + '">')
 
 
+    DealerPoints = dealACard('#dealer-hand');
+    console.log(DealerPoints);
+    $('#dealer-points').text(DealerPoints);
+    DealerPoints = dealACard('#dealer-hand');
+    $('#dealer-points').text(DealerPoints);
+    while (DealerPoints < 17){
+
+     DealerPoints = dealACard('#dealer-hand');
+      $('#dealer-points').text(DealerPoints);
+    if (ifBusted(DealerPoints)){
+      $('#messages').text("********************** PLAYER WINS ******************************");
+      $('#messages').text("******* DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
+
+      GameOver();}
+    }
 
 
+    PlayerPoints = dealACard('#player-hand');
+    $('#player-points').text(PlayerPoints);
+    PlayerPoints = dealACard('#player-hand');
+    $('#player-points').text(PlayerPoints);
 
-
-
-    /*dealACard('#dealer-hand', img);
-    dealACard('#dealer-hand', ing);
-    dealACard('#player-hand', img);
-    dealACard('#player-hand', img);*/
 
         $('#deal-button').hide();
+  });
+
+  $('#hit-button').click(function getCardImageUrl() {
+
+
+    PlayerPoints = dealACard('#player-hand');
+    if (ifBusted(PlayerPoints)){
+      $('#messages').text('*****HOUDINI CHEATS LIKE YOU ACTUALLY SAW ME DEAL!  BUST! GO HOME AND DO REAL WORK!!');
+      $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+      GameOver();
+    }
+    $('#player-points').text(PlayerPoints);
+
+  });
+
+  $('#stand-button').click(function getCardImageUrl() {
+    $('#hit-button').hide();
+    if(DealerPoints > PlayerPoints){
+      $('#messages').text("********************** PLAYER WINS ******************************");
+      $('#messages').text("******* DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
+
+    }
+    else if (DealerPoints < PlayerPoints){
+      $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+    }
+    else if (DealerPoints === PlayerPoints){
+      $('#messages').text('*****PUSH COMPUTER STILL TAKES ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+    }
+
+    $('#player-points').text(PlayerPoints);
+
   });
 
 
 
 
 
+function GameOver(){
+$('#hit-button').hide();
+
+}
 
 });  // end of Dom
