@@ -9,6 +9,7 @@ function dealACard (playerType){
   var points = 0;
 if (playerType === '#dealer-hand'){
    dealHand.push(card);
+
    points = calculatePoints(dealHand);
 }
 else if (playerType === '#player-hand'){
@@ -17,7 +18,7 @@ else if (playerType === '#player-hand'){
 }
 if (dealHand.length == 1){
   //firstCard = card.image;
-  //console.log(firstCard);
+
  //card.image = 'images/H.png';
  $(playerType).append(
    '<img src="' + 'images/H.png'+ '">'
@@ -41,11 +42,11 @@ function addImg(){
 }
 
 
-
-
 // Returns points of the persons array
 function calculatePoints(array) {
   var points = 0;
+  var length = array.length;
+  //length = length + 1;  
   for (var i = 0; i < array.length; i++) {
 
     if ((array[i].point === 1) && (points < 11)){
@@ -53,7 +54,10 @@ function calculatePoints(array) {
 
 
     points += array[i].point;
-  }
+     }
+
+
+
   return points;
 };
 
