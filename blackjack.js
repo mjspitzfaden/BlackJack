@@ -8,7 +8,7 @@ $(function domReady() {
 
 
     DealerPoints = dealACard('#dealer-hand');
-    console.log(DealerPoints);
+    //console.log(DealerPoints);
     $('#dealer-points').text(DealerPoints);
     DealerPoints = dealACard('#dealer-hand');
     $('#dealer-points').text(DealerPoints);
@@ -36,8 +36,8 @@ $(function domReady() {
   });
 
   $('#stand-button').click(function getCardImageUrl() {
-    $('#dealer-hand').find('img').first().remove();
-     addImg();
+//    $('#dealer-hand').find('img').first().remove();
+//     addImg();
     $('#hit-button').hide();
     $('#stand-button').hide();
 
