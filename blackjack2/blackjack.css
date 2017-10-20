@@ -1,0 +1,63 @@
+#table {
+  padding: 200px 50px;
+  border: 10px solid red;
+  background: green;
+  border-radius: 140px;
+}
+
+#messages {
+ font-size: 25px;
+ color: brown;
+ border: 10px solid blue;
+ font-style: oblique;
+
+}
+
+.lable{
+padding: 50px 50px;
+background: lightblue;
+}
+
+.buttons {
+  text-align: center;
+  font-size: 25px;
+}
+
+.hand {
+  padding: 10px;
+  height: 150px;
+  background: lightgreen;
+}
+
+#deal-button {
+  width: 90px;
+  height: 80px;
+  border-radius: 25px;
+}
+#stand-button {
+  width: 90px;
+  height: 80px;
+  border-radius: 25px;
+
+}
+
+#hit-button {
+  width: 90px;
+  height: 80px;
+  border-radius: 25px;
+}
+
+#play-again {
+  width: 90px;
+  height: 80px;
+  color: red;
+  border-radius: 25px;
+}
+
+.hand img {
+  width: 100px;
+  height: 140px;
+  display: block;
+  float: left;
+  padding: 5px;
+}
