@@ -1,3 +1,7 @@
+//
+
+
+
 class Person{
 constructor(person) {
   this.hand = new Hand();
