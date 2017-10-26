@@ -1,25 +1,24 @@
 $(function domReady() {
-  var player = new Person();
-  var dealer = new Person();
-  var card = new Card();
+var player = new Person();
+var dealer = new Person();
+var card = new Card();
+var deck = new Deck();
 
-
-  var deck = new Deck();
-  startGame();
 
 
 
 
   $('#deal-button').click(function getCardImageUrl() {
+    startGame();
     setDealerFirstImage();
     dealer.hand.addCard(deck.getCard());
 
-    $('#dealer-points').text(dealer.getPersonScore());
+    $('#dealer-points').text(dealer.getDealerScore());
     card = deck.getCard();
     dealer.hand.addCard(card)
     card.setDealerImage();
 
-    $('#dealer-points').text(dealer.getPersonScore());
+    $('#dealer-points').text(dealer.getDealerScore());
     card = deck.getCard();
     player.hand.addCard(card);
     card.setPlayerImage();
@@ -53,8 +52,10 @@ $(function domReady() {
 
 
   $('#stand-button').click(function getCardImageUrl() {
-    $('#dealer-hand').find('img').first().remove();
-      dealer.hand.hand[0].setDealerImage();
+    //$('#dealer-hand').find('img').first().remove();
+      //dealer.hand.hand[0].setDealerImage();
+      console.log("the first card value");
+      console.log(dealer.hand.hand[0].point);
 
     $('#hit-button').hide();
     $('#stand-button').hide();
@@ -74,7 +75,7 @@ $(function domReady() {
       GameOver();}
     }
 
-    if(DealerPoints < PlayerPoints){
+    if(dealer.getPersonScore()< player.getPersonScore()){
       $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
        GameOver();
     }
@@ -100,7 +101,12 @@ $(function domReady() {
     $('#messages').text('');
     $('#player-points').text('');
     $('#dealer-points').text('');
+    dealer.setHandZero();
+    player.setHandZero();
     startGame();
+
+    //console.log(dealer.hand);
+
   });
 
 
@@ -109,7 +115,11 @@ $(function domReady() {
 function GameOver(){
 $('#hit-button').hide();
 $('#dealer-hand').find('img').first().remove();
-  dealer.hand.hand[0].setDealerImage();
+  //dealer.hand.hand[0].setDealerImage();
+  image = dealer.hand.hand[0].image;
+  console.log(image);
+$('#dealer-hand').prepend('<img src="' + image + '">' );
+$('#dealer-points').text(dealer.getPersonScore());
  $('#stand-button').hide();
 }
 

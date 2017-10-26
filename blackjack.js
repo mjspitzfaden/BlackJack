@@ -1,73 +1,94 @@
 $(function domReady() {
+var player = new Person();
+var dealer = new Person();
+var card = new Card();
+var deck = new Deck();
 
-  startGame();
-  var PlayerPoints = 0;
-  var DealerPoints = 0;
+
+
+
+
   $('#deal-button').click(function getCardImageUrl() {
+    startGame();
+    setDealerFirstImage();
+    dealer.hand.addCard(deck.getCard());
+
+    $('#dealer-points').text(dealer.getDealerScore());
+    card = deck.getCard();
+    dealer.hand.addCard(card)
+    card.setDealerImage();
+
+    $('#dealer-points').text(dealer.getDealerScore());
+    card = deck.getCard();
+    player.hand.addCard(card);
+    card.setPlayerImage();
+
+    $('#player-points').text(player.getPersonScore());
+    card = deck.getCard();
+    player.hand.addCard(card);
+    card.setPlayerImage();
 
 
-
-    DealerPoints = dealACard('#dealer-hand');
-    //console.log(DealerPoints);
-    $('#dealer-points').text(DealerPoints);
-    DealerPoints = dealACard('#dealer-hand');
-    $('#dealer-points').text(DealerPoints);
-
-
-    PlayerPoints = dealACard('#player-hand');
-    $('#player-points').text(PlayerPoints);
-    PlayerPoints = dealACard('#player-hand');
-    $('#player-points').text(PlayerPoints);
-
-
+    $('#player-points').text(player.getPersonScore());
         $('#deal-button').hide();
   });
 
   $('#hit-button').click(function getCardImageUrl() {
 
+     card = deck.getCard();
+     player.hand.addCard(card);
+     card.setPlayerImage();
+     $('#player-points').text(player.getPersonScore());
 
-    PlayerPoints = dealACard('#player-hand');
-    if (ifBusted(PlayerPoints)){
-      $('#messages').text('*****COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE**********');
+    if (player.ifBusted()){
+      $('#messages').text('COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
+      //$('#messages').foggy();
+
       GameOver();
     }
-    $('#player-points').text(PlayerPoints);
+
 
   });
 
+
   $('#stand-button').click(function getCardImageUrl() {
-//    $('#dealer-hand').find('img').first().remove();
-//     addImg();
+    //$('#dealer-hand').find('img').first().remove();
+      //dealer.hand.hand[0].setDealerImage();
+      console.log("the first card value");
+      console.log(dealer.hand.hand[0].point);
+
     $('#hit-button').hide();
     $('#stand-button').hide();
 
 
 
-    while (DealerPoints < 17){
+    while (dealer.getPersonScore() < 17){
 
-     DealerPoints = dealACard('#dealer-hand');
-      $('#dealer-points').text(DealerPoints);
-    if (ifBusted(DealerPoints)){
-      $('#messages').text("**************** PLAYER WINS-DEALER BUSTS ***********************");
-      $('#messages').text("******* DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
+     card = deck.getCard();
+     dealer.hand.addCard(card)
+     card.setDealerImage();
+      $('#dealer-points').text(dealer.getPersonScore());
+    if (dealer.ifBusted()){
+      $('#messages').text("PLAYER WINS-DEALER BUSTS");
+      $('#messages').text("DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA!");
 
       GameOver();}
     }
 
-    if(DealerPoints < PlayerPoints){
-      $('#messages').text("******* PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA! ********");
+    if(dealer.getPersonScore()< player.getPersonScore()){
+      $('#messages').text("PLAYER WINS: DONT WORRY I WILL GET YOU MONEY NEXT TIME HA HA!");
        GameOver();
     }
-    else if (DealerPoints > PlayerPoints && ifBusted(DealerPoints) === 0){
+    else if (dealer.getPersonScore() > player.getPersonScore() && dealer.ifBusted() === 0){
       $('#messages').text('COMPUTER WINS ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
       GameOver();
     }
-    else if (DealerPoints === PlayerPoints){
+    else if (dealer.getPersonScore() === player.getPersonScore()){
       $('#messages').text('PUSH COMPUTER STILL TAKES ALL YOU MONEY! GO BACK TO WORK SO I CAN TAKE SOME MORE');
       GameOver();
     }
 
-    $('#player-points').text(PlayerPoints);
+    $('#player-points').text(player.getPersonScore());
 
   });
 
@@ -80,7 +101,12 @@ $(function domReady() {
     $('#messages').text('');
     $('#player-points').text('');
     $('#dealer-points').text('');
+    dealer.setHandZero();
+    player.setHandZero();
     startGame();
+
+    //console.log(dealer.hand);
+
   });
 
 
@@ -89,8 +115,24 @@ $(function domReady() {
 function GameOver(){
 $('#hit-button').hide();
 $('#dealer-hand').find('img').first().remove();
- addImg();
+  //dealer.hand.hand[0].setDealerImage();
+  image = dealer.hand.hand[0].image;
+  console.log(image);
+$('#dealer-hand').prepend('<img src="' + image + '">' );
+$('#dealer-points').text(dealer.getPersonScore());
  $('#stand-button').hide();
 }
+
+function setDealerFirstImage(){
+  $('#dealer-hand').append(
+    '<img src="' + 'images/H.png'+ '">'
+  )
+}
+
+function startGame(){
+  deck.shuffle();
+}
+
+
 
 });  // end of Dom

@@ -41,12 +41,19 @@ function addImg(){
 
 }
 
+$.fn.hello = function () {
+  this.text('YOU BUSTED');
+  this.click(function () {
+    alert('YOU BUSTED');
+  });
+}
+
 
 // Returns points of the persons array
 function calculatePoints(array) {
   var points = 0;
   var length = array.length;
-  //length = length + 1;  
+  //length = length + 1;
   for (var i = 0; i < array.length; i++) {
 
     if ((array[i].point === 1) && (points < 11)){
